@@ -1,6 +1,7 @@
 galaxy_info:
   author: Alex Ackerman
   description: Ansible Role to Install Docker Engine
+  role_name: docker
 
   # issue_tracker_url: http://example.com/issue/tracker
 
