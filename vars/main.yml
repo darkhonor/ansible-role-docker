@@ -1,2 +1,10 @@
 ---
 # vars file for ansible-role-docker
+###
+# Reference: https://github.com/escalate/ansible-raspberry-docker/
+###
+docker_package_arch_map:
+  x86_64: amd64
+  armv7l: armhf
+  aarch64: arm64
+docker_package_arch: "{{ docker_package_arch_map[ansible_architecture] }}"

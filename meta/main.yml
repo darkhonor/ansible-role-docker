@@ -3,7 +3,7 @@ galaxy_info:
   description: Ansible Role to Install Docker Engine
   role_name: docker
 
-  # issue_tracker_url: http://example.com/issue/tracker
+  issue_tracker_url: https://github.com/darkhonor/ansible-role-docker/issues
 
   license: MIT
 
@@ -15,6 +15,10 @@ galaxy_info:
     - 'bullseye'  # Raspbian OS current
     - 'buster'    # Raspbian OS legacy
 
-  galaxy_tags: []
+  galaxy_tags:
+    - raspberry
+    - pi
+    - raspberrypi
+    - docker
 
 dependencies: []
