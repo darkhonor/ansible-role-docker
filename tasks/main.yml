@@ -1,0 +1,63 @@
+---
+# tasks file for ansible-role-docker
+- name: Remove Unofficial Packages
+  ansible.builtin.apt:
+    name:
+      - docker.io
+      - docker-compose
+      - docker-doc
+      - podman-docker
+      - containerd
+      - runc
+    force_apt_get: true
+    state: absent
+
+- name: Install Prerequisites
+  ansible.builtin.apt:
+    name:
+      - ca-certificates
+    force_apt_get: true
+
+- name: Pull Docker's Official GPG Key
+  ansible.builtin.get_url:
+    url: https://download.docker.com/linux/debian/gpg
+    dest: /etc/apt/trusted.gpg.d/docker.asc
+    mode: '0644'
+
+- name: Add Docker APT Repository
+  ansible.builtin.apt_repository:
+    repo: "deb [arch=armhf signed-by=/etc/apt/trusted.gpg.d/docker.asc] https://download.docker.com/linux/debian {{ ansible_facts['distribution_release'] }} stable"
+    filename: docker
+    mode: '0644'
+    update_cache: true
+    state: present
+
+- name: Install the Docker Engine
+  ansible.builtin.apt: 
+    name:
+      - docker-ce 
+      - docker-ce-cli
+      - containerd.io
+      - docker-buildx-plugin
+      - docker-compose-plugin
+    state: present
+
+- name: Install Python Modules
+  ansible.builtin.apt: 
+    name:
+      - python3-setuptools
+      - python3-pip
+    state: present
+
+- name: Install Docker SDK for Python
+  ansible.builtin.pip:
+    name: docker
+    state: present
+
+- name: Add user to docker group
+  ansible.builtin.user:
+    name: "{{ ansible_user }}"
+    append: true
+    groups: docker
+  when:
+    - configure_ansible_user
