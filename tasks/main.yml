@@ -16,6 +16,7 @@
   ansible.builtin.apt:
     name:
       - ca-certificates
+      - curl
     force_apt_get: true
 
 - name: Pull Docker's Official GPG Key
