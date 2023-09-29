@@ -8,3 +8,6 @@ docker_package_arch_map:
   armv7l: armhf
   aarch64: arm64
 docker_package_arch: "{{ docker_package_arch_map[ansible_architecture] }}"
+
+docker_tls_port: 2376
+docker_port: 2375

@@ -1,3 +1,18 @@
 ---
 # defaults file for ansible-role-docker
 configure_ansible_user: true
+enable_service: true
+
+###
+# IP Configuration
+###
+bind_ip: 0.0.0.0
+
+###
+# TLS Configuration
+###
+configure_tls: false
+authenticate_clients: false
+tls_ca_cert_path: ""
+tls_cert_path: ""
+tls_key_path: ""
