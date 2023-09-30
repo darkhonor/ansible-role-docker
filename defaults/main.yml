@@ -9,6 +9,16 @@ enable_service: true
 bind_ip: 0.0.0.0
 
 ###
+# Firewall Settings
+###
+enable_ufw: true
+enable_firewalld: true
+valid_sources:
+  - 10.0.0.0/8
+  - 172.16.0.0/12
+  - 192.168.0.0/16
+
+###
 # TLS Configuration
 ###
 configure_tls: false
@@ -16,3 +26,8 @@ authenticate_clients: false
 tls_ca_cert_path: ""
 tls_cert_path: ""
 tls_key_path: ""
+
+###
+# RHEL / CentOS Options
+###
+gpgkey_url: https://download.docker.com/linux/centos/gpg

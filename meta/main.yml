@@ -18,11 +18,18 @@ galaxy_info:
     versions:
       - jammy
       - focal
+  - name: EL
+    versions:
+      - '8'
+      - '9'
 
   galaxy_tags:
     - raspberry
     - pi
     - raspberrypi
     - docker
+    - ubuntu
+    - centos
+    - rhel
 
 dependencies: []

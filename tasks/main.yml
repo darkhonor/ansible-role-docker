@@ -2,3 +2,6 @@
 - name: "Prepare the {{ ansible_facts['distribution'] }} guest operating system."
   include_tasks: "debian.yml"
   when: "ansible_facts['distribution']  in ['Debian', 'Ubuntu']"
+- name: "Configure the {{ ansible_facts['distribution'] }} guest operating system."
+  include_tasks: centos.yml
+  when: "ansible_facts['distribution'] in ['RedHat', 'CentOS', 'Rocky', 'AlmaLinux']"
