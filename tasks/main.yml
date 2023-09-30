@@ -64,12 +64,19 @@
     - configure_ansible_user
 
 - name: Configure Docker Daemon
-  ansible.builltin.template:
+  ansible.builtin.template:
     src: daemon.json.j2
     dest: /etc/docker/daemon.json
     mode: '0644'
     owner: root
     group: root
+
+- name: Remove Host Call in systemd Configuration
+  ansible.builtin.lineinfile:
+    path: /lib/systemd/system/docker.service
+    regexp: '^ExecStart=/usr/bin/dockerd='
+    line: "ExecStart=/usr/bin/dockerd  --containerd=/run/containerd/containerd.sock"
+    state: present
 
 - name: Update UFW Firewall
   community.general.ufw:
@@ -90,7 +97,7 @@
     state: reloaded
 
 - name: Enable Docker Service on System Start
-  ansible.builtin.system:
+  ansible.builtin.service:
     name: docker
     enabled: true
     state: started

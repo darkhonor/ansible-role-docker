@@ -7,6 +7,7 @@
     }
   },
   "experimental": false,
+  "hosts": [ "tcp://{{ bind_ip }}", "fd://" ],
   "ip": "{{ bind_ip }}",
   "ipv6": false,
   "log-driver": "json-file",
@@ -27,5 +28,5 @@
   "tlscert": "{{ tls_cert_path }}",
   "tlskey": "{{ tls_key_path }}",
   "tlsverify": {{ authenticate_clients | bool | lower }},
-  "userland-proxy": false,
+  "userland-proxy": false
 }
