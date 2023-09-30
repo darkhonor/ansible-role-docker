@@ -23,5 +23,10 @@
   "max-concurrent-downloads": 3,
   "max-concurrent-uploads": 5,
   "max-download-attempts": 5,
+  "tls": {{ configure_tls | bool | lower }},
+  "tlscacert": "{{ tls_ca_cert_path }}",
+  "tlscert": "{{ tls_cert_path }}",
+  "tlskey": "{{ tls_key_path }}",
+  "tlsverify": {{ authenticate_clients | bool | lower }},
   "userland-proxy": false
 }
