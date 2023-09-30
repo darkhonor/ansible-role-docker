@@ -21,7 +21,7 @@
 
 - name: Pull Docker's Official GPG Key
   ansible.builtin.get_url:
-    url: https://download.docker.com/linux/debian/gpg
+    url: "https://download.docker.com/linux/{{ ansible_distribution | lower }}/gpg"
     dest: /etc/apt/trusted.gpg.d/docker.asc
     mode: '0644'
 
@@ -99,5 +99,11 @@
 - name: Enable Docker Service on System Start
   ansible.builtin.service:
     name: docker
+    enabled: true
+    state: started
+
+- name: Enable containerd Service on System Start
+  ansible.builtin.service:
+    name: containerd.service
     enabled: true
     state: started
