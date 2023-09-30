@@ -12,8 +12,12 @@ galaxy_info:
   platforms:
   - name: Debian
     versions:
-    - 'bullseye'  # Raspbian OS current
-    - 'buster'    # Raspbian OS legacy
+      - 'bullseye'  # Raspbian OS current
+      - 'buster'    # Raspbian OS legacy
+  - name: Ubuntu
+    versions:
+      - jammy
+      - focal
 
   galaxy_tags:
     - raspberry
