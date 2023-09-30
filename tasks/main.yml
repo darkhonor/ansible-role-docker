@@ -74,8 +74,8 @@
 - name: Remove Host Call in systemd Configuration
   ansible.builtin.lineinfile:
     path: /lib/systemd/system/docker.service
-    regexp: '^ExecStart=/usr/bin/dockerd='
-    line: "ExecStart=/usr/bin/dockerd  --containerd=/run/containerd/containerd.sock"
+    regexp: "^ExecStart=/usr/bin/dockerd -H"
+    line: "ExecStart=/usr/bin/dockerd --containerd=/run/containerd/containerd.sock"
     state: present
 
 - name: Update UFW Firewall
